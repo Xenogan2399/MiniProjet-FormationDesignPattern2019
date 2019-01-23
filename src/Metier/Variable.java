@@ -1,4 +1,8 @@
-package Noyeau;
+package Metier;
 
-public class Variable {
+public class Variable extends Formule_Atomique {
+
+    public Variable(String idf) {
+        super(idf);
+    }
 }
