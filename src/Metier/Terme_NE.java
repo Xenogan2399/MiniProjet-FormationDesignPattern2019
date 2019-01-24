@@ -10,4 +10,7 @@ public class Expression_Logique_NE extends Expression_Logique {
         this.membreGauche = membreGauche;
         this.connecteur = connecteur;
     }
+
+
+
 }
