@@ -1,8 +1,8 @@
 package Metier;
 
-public class Constante extends Formule_Atomique {
+import java.util.function.Function;
 
-    public boolean valeur;
+public class Constante extends Formule_Atomique {
 
     public Constante(String idf, boolean valeur) {
         super(idf);
@@ -10,4 +10,18 @@ public class Constante extends Formule_Atomique {
     }
 
 
+    @Override
+    public boolean evaluer() {
+        return false;
+    }
+
+    @Override
+    public Function<Boolean[], Boolean> getCalculator() {
+        return new Function<Boolean[], Boolean>() {
+            @Override
+            public Boolean apply(Boolean[] booleans) {
+                return valeur;
+            }
+        };
+    }
 }

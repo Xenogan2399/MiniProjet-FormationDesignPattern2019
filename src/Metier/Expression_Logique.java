@@ -2,24 +2,32 @@ package Metier;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Stack;
 import java.util.function.Function;
 
-public class Expression_Logique implements Refutable {
+public abstract class Expression_Logique implements Refutable {
 
-    @Override
-    public boolean evaluer(HashMap<String, Boolean> valeurs) {
-        return false;
+    Function<Stack<Boolean>,Stack<Boolean>> stackHandler ;
+
+    public Function<Stack<Boolean>, Stack<Boolean>> getStackHandler() {
+        return stackHandler;
     }
 
-    @Override
-    public Function<HashMap<String,Boolean>, Boolean> getEvaluator() {
-        return null;
+    public void setStackHandler(Function<Stack<Boolean>, Stack<Boolean>> stackHandler) {
+        this.stackHandler = stackHandler;
     }
+
+
+
+    @Override
+    public abstract boolean evaluer();
+
 
     @Override
     public Expression_Logique getExpression() {
         return this;
     }
+
 
 
 }

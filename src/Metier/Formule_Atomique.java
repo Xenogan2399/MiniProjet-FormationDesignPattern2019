@@ -1,6 +1,10 @@
 package Metier;
 
-public abstract class Formule_Atomique {
+import java.util.Stack;
+import java.util.function.Function;
+
+public abstract class Formule_Atomique extends Expression_Logique implements Atome_NE  {
+    protected boolean valeur;
     private boolean negation = false;
     private String identifiant;
 
@@ -20,4 +24,17 @@ public abstract class Formule_Atomique {
         negation = !negation;
         return this;
     }
+
+    @Override
+    public boolean evaluer() {
+        if(negation)
+            return !valeur;
+        return valeur ;
+    }
+
+    public boolean getValeur(){
+        return valeur;
+    }
+
+
 }
