@@ -1,8 +1,5 @@
 package Metier;
 
-import java.util.Stack;
-import java.util.function.Function;
-
 public abstract class Formule_Atomique extends Expression_Logique implements Atome_NE  {
     protected boolean valeur;
     private boolean negation = false;

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Dependencies/Dependencies.iml" filepath="$PROJECT_DIR$/Dependencies/Dependencies.iml" />
       <module fileurl="file://$PROJECT_DIR$/MiniProjet-FormationDesignPattern2019.iml" filepath="$PROJECT_DIR$/MiniProjet-FormationDesignPattern2019.iml" />
     </modules>
   </component>

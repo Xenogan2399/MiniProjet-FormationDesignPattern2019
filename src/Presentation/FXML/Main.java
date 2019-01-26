@@ -1,5 +1,6 @@
-package Presentation;
+package Presentation.FXML;
 
+import Presentation.Controlleur.Controller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,12 +11,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
+        Gestionaire_Interface G = new Gestionaire_Interface(primaryStage);
+        Controller C = (Controller) G.switchPanel("GUI.fxml","Mini-Compilateur");
     }
-
 
     public static void main(String[] args) {
         launch(args);
