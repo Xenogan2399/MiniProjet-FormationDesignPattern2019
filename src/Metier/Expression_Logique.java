@@ -11,11 +11,6 @@ public abstract class Expression_Logique implements Refutable {
         return stackHandler;
     }
 
-    public void setStackHandler(Function<Stack<Boolean>, Stack<Boolean>> stackHandler) {
-        this.stackHandler = stackHandler;
-    }
-
-
 
     @Override
     public abstract boolean evaluer();

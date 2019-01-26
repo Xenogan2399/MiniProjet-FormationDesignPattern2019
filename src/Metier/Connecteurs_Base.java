@@ -100,4 +100,9 @@ public enum Connecteurs_Base implements Connecteur{
         getTraitement_recursif();
         return traitement_recursif;
     }
+
+    @Override
+    public boolean isFeuille() {
+        return false;
+    }
 }

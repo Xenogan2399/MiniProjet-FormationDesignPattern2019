@@ -38,7 +38,6 @@ public abstract class Call {
         listNomColonnes.add("A");
         listNomColonnes.add("B");
         LinkedList<Boolean> H = new LinkedList<>();
-
         H.add(true);
         H.add(true);
         dictionnaire.put(H,false);
@@ -50,7 +49,6 @@ public abstract class Call {
             T.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().get(finalI)+""));
             Table.getColumns().add(T);
         }
-
         TableColumn<LinkedList<Boolean>,String> valeur = new TableColumn<>("Valeur");
         valeur.setCellValueFactory(cell -> (new SimpleStringProperty(String.valueOf(dictionnaire.get(cell.getValue())))));
         Table.getColumns().add(valeur);

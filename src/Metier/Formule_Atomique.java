@@ -33,5 +33,8 @@ public abstract class Formule_Atomique extends Expression_Logique implements Ato
         return valeur;
     }
 
-
+    @Override
+    public boolean isFeuille() {
+        return true;
+    }
 }

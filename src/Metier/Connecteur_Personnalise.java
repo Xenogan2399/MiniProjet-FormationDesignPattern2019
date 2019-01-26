@@ -30,4 +30,9 @@ public class Connecteur_Personnalise implements Connecteur {
     public Function<Stack<Boolean>, Stack<Boolean>> getStackHandler() {
         return expression_semantique.getStackHandler();
     }
+
+    @Override
+    public boolean isFeuille() {
+        return false;
+    }
 }

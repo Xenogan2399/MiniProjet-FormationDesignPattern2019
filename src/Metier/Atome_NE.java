@@ -6,4 +6,5 @@ import java.util.function.Function;
 public interface Atome_NE {
     boolean evaluer();
     Function<Stack<Boolean>, Stack<Boolean>> getStackHandler();
+    boolean isFeuille();
 }

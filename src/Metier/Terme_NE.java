@@ -52,10 +52,7 @@ public class Terme_NE extends Expression_Logique implements Atome_NE{
         LR.add(T1);
         LR.add(T2);
         LR.add(T3);
-        /*for(Refutable R:LR){
-            System.out.println(R.evaluer());
-        }*/
-        System.out.println(T3.calculate(true,true,true,false));
+        System.out.println(T2.calculate(true,true,true,false));
     }
 
     @Override
@@ -65,32 +62,36 @@ public class Terme_NE extends Expression_Logique implements Atome_NE{
 
     @Override
     public Function<Stack<Boolean>, Stack<Boolean>> getStackHandler() {
-        if(stackHandler != null)
-            return stackHandler;
         Function<Stack<Boolean>, Stack<Boolean>> F1 = new Function<Stack<Boolean>, Stack<Boolean>>() {
             @Override
             public Stack<Boolean> apply(Stack<Boolean> booleans) {
                 return booleans;
             }
         };
-        Function<Stack<Boolean>, Stack<Boolean>> F2 = new Function<Stack<Boolean>, Stack<Boolean>>() {
-            @Override
-            public Stack<Boolean> apply(Stack<Boolean> booleans) {
-                return booleans;
-            }
-        };
-        if(membreGauche.getClass().getName().equalsIgnoreCase("Terme_NE"))
+        if(!membreDroit.isFeuille() && !membreGauche.isFeuille())
         {
-            F1 = membreGauche.getStackHandler();
+            final boolean[] rez1 = new boolean[2];
+            F1 = membreGauche.getStackHandler().andThen(new Function<Stack<Boolean>, Stack<Boolean>>() {
+                @Override
+                public Stack<Boolean> apply(Stack<Boolean> booleans) {
+                    rez1[0] = booleans.pop();
+                    return booleans ;
+                }
+            }).compose(membreDroit.getStackHandler()).andThen(new Function<Stack<Boolean>, Stack<Boolean>>() {
+                @Override
+                public Stack<Boolean> apply(Stack<Boolean> booleans) {
+                    booleans.push(rez1[0]);
+                    return booleans ;
+                }
+            }).compose(connecteur.getTraitement_recursif());
         }
-        if(membreDroit.getClass().getName().equalsIgnoreCase("Terme_NE"))
-        {
-            F2 = membreDroit.getStackHandler();
-        }
-
-        return F1.compose(F2).compose(connecteur.getTraitement_recursif());
+        return F1;
     }
 
+    @Override
+    public boolean isFeuille() {
+        return false;
+    }
 
 
     public boolean calculate(Boolean ... bool){
