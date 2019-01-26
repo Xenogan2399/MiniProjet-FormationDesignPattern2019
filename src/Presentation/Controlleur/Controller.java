@@ -15,6 +15,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import java.net.URL;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class Controller extends Call implements Initializable {
@@ -26,9 +27,7 @@ public class Controller extends Call implements Initializable {
     @FXML
     private JFXButton executer;
     @FXML
-    private TableView<HashSet<Boolean>> table;
-
-    private boolean maximize = false;
+    private TableView<LinkedList<Boolean>> table;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

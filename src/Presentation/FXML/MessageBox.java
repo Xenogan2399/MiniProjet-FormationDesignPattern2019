@@ -66,16 +66,14 @@ public class MessageBox {
         JFXButton b1=new JFXButton("OK !");
         b1.getStyleClass().add("buttons1");
 
-        if(option == 1) {
-            p3.getChildren().add(b1);
-            b1.setOnAction(e ->{
-                fermerFenetre();
-            });
-        }
-        else{
+        p3.getChildren().add(b1);
+        b1.setOnAction(e ->{
+            fermerFenetre();
+        });
+        if(option==2){
             JFXButton b2=new JFXButton("Générer La Table De Vérité");
             b2.getStyleClass().add("buttons1");
-            p3.getChildren().addAll(b1,b2);
+            p3.getChildren().add(b2);
             p3.setSpacing(10);
             b2.setOnAction(e -> {
                 genererT=true;

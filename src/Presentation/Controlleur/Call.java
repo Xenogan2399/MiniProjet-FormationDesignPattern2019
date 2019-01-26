@@ -18,12 +18,9 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public abstract class Call {
 
-    protected HashMap<HashSet<Boolean>,Boolean> dictionnaire = new HashMap<>();
+    protected HashMap<LinkedList<Boolean>,Boolean> dictionnaire = new HashMap<>();
     protected LinkedList<String> listNomColonnes = new LinkedList<>();
-    protected ObservableList<HashSet<Boolean>> o = FXCollections.observableArrayList();
-
-    static double xOffset = 0;
-    static double yOffset = 0;
+    protected ObservableList<LinkedList<Boolean>> o = FXCollections.observableArrayList();
 
     protected boolean verifSyntaxique(String expression){
         return true;
@@ -37,29 +34,24 @@ public abstract class Call {
 
     }
 
-    protected void remplirTable(TableView<HashSet<Boolean>> Table){
+    protected void remplirTable(TableView<LinkedList<Boolean>> Table){
+        listNomColonnes.add("A");
+        listNomColonnes.add("B");
+        LinkedList<Boolean> H = new LinkedList<>();
+
+        H.add(true);
+        H.add(true);
+        dictionnaire.put(H,false);
         o.addAll(dictionnaire.keySet());
         Table.setItems(o);
         for (int i = 0; i <listNomColonnes.size(); i++) {
-
-            TableColumn<HashSet<Boolean>,String> T = new TableColumn<>(listNomColonnes.get(i));
+            TableColumn<LinkedList<Boolean>,String> T = new TableColumn<>(listNomColonnes.get(i));
             int finalI = i;
-            T.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<HashSet<Boolean>, String>, ObservableValue<String>>() {
-                @Override
-                public ObservableValue<String> call(TableColumn.CellDataFeatures<HashSet<Boolean>, String> param) {
-
-                    SimpleStringProperty SS = null;
-                    ArrayList<Boolean> A = (ArrayList<Boolean>) param.getValue().clone();
-                    SS = new SimpleStringProperty(String.valueOf(A.get(finalI)));
-                    return SS;
-
-                }
-            });
+            T.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().get(finalI)+""));
             Table.getColumns().add(T);
-
         }
 
-        TableColumn<HashSet<Boolean>,String> valeur = new TableColumn<>("Valeur");
+        TableColumn<LinkedList<Boolean>,String> valeur = new TableColumn<>("Valeur");
         valeur.setCellValueFactory(cell -> (new SimpleStringProperty(String.valueOf(dictionnaire.get(cell.getValue())))));
         Table.getColumns().add(valeur);
     }
