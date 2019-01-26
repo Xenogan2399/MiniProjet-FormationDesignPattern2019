@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 public class Gestion_Table_Verite {
-    HashMap<LinkedList<Boolean>,Boolean> table_de_verite;
-    LinkedList<String> liste_literraux;
+    HashMap<LinkedList<Boolean>,Boolean> table_de_verite = new HashMap<>();
+    LinkedList<String> liste_literraux = new LinkedList<>();
 
     public static void varier(Expression_Logique E, Formule_Atomique V, LinkedList<Formule_Atomique> litteraux,HashMap<LinkedList<Boolean>,Boolean> D){
         V.setValeur(true);
@@ -36,10 +36,20 @@ public class Gestion_Table_Verite {
         HashSet<Formule_Atomique> HF = new HashSet<>();
         E.getLitteraux(HF);
         LF.addAll(HF);
-        liste_literraux = new LinkedList(LF);
+        for(Formule_Atomique F:LF)
+            liste_literraux.add(F.toString());
+        System.out.println(liste_literraux);
         HashMap<LinkedList<Boolean>,Boolean> Rez = new HashMap<>();
         varier(E,LF.get(0),LF,Rez);
         table_de_verite = Rez;
+    }
+
+    public HashMap<LinkedList<Boolean>, Boolean> getTable_de_verite() {
+        return table_de_verite;
+    }
+
+    public LinkedList<String> getListe_literraux() {
+        return liste_literraux;
     }
 
     public static void main(String[] st){

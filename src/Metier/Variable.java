@@ -26,4 +26,9 @@ public class Variable extends Formule_Atomique{
     public boolean isVariable() {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return getIdentifiant();
+    }
 }
