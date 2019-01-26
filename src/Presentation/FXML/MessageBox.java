@@ -37,7 +37,7 @@ public class MessageBox {
 
         conteneur.getStylesheets().add("Presentation/CSS/Style.css");
         p1.setStyle("-fx-background-color:  #b0bbbf");
-        p1.setPrefHeight(37);
+        p1.setPrefHeight(40);
 
         ImageView img1=new ImageView(new Image("Presentation/Assets/close'.png"));
         img1.setFitHeight(22);
@@ -60,8 +60,8 @@ public class MessageBox {
         l.setTextFill(Paint.valueOf("ffffff"));
 
         ImageView img2=new ImageView(new Image("Presentation/Assets/info.png"));
-        img2.setFitHeight(30);
-        img2.setFitWidth(30);
+        img2.setFitHeight(25);
+        img2.setFitWidth(25);
 
         JFXButton b1=new JFXButton("OK !");
         b1.getStyleClass().add("buttons1");
@@ -89,11 +89,13 @@ public class MessageBox {
 
         b.setLayoutX(450);
         b.setLayoutY(0);
-        l.setLayoutX(10);
+        l.setLayoutX(40);
         l.setLayoutY(5);
+        img2.setLayoutX(5);
+        img2.setLayoutY(6);
 
-        p1.getChildren().addAll(l,b);
-        p2.getChildren().addAll(img2,l1);
+        p1.getChildren().addAll(img2,l,b);
+        p2.getChildren().addAll(l1);
         VBox v=new VBox(p2,p3);
         v.setSpacing(10);
         v.setMinHeight(100);
