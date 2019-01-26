@@ -27,7 +27,7 @@ public abstract class Call {
     }
 
     protected boolean verifSatisf(){
-        return true;
+        return false;
     }
 
     protected void compiler(String expression){
