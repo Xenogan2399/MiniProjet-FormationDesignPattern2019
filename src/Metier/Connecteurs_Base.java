@@ -1,6 +1,7 @@
 package Metier;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Stack;
 import java.util.function.Function;
@@ -76,7 +77,6 @@ public enum Connecteurs_Base implements Connecteur{
 
     @Override
     public boolean calculer(Stack<Boolean> S) {
-        System.out.println("Avant un calcul ma pile donnait : " + S);
         getEvaluateur();
         return evaluateur.apply(S);
     }
@@ -101,8 +101,4 @@ public enum Connecteurs_Base implements Connecteur{
         return traitement_recursif;
     }
 
-    @Override
-    public boolean isFeuille() {
-        return false;
-    }
 }

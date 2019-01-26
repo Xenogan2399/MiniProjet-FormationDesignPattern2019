@@ -1,6 +1,7 @@
 package Metier;
 
 import java.sql.Ref;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Stack;
 import java.util.function.Function;
@@ -52,7 +53,9 @@ public class Terme_NE extends Expression_Logique implements Atome_NE{
         LR.add(T1);
         LR.add(T2);
         LR.add(T3);
-        System.out.println(T2.calculate(true,true,true,false));
+        HashSet<Formule_Atomique> LFA = new HashSet<>();
+        T3.getLitteraux(LFA);
+        System.out.println(LFA);
     }
 
     @Override
@@ -83,9 +86,27 @@ public class Terme_NE extends Expression_Logique implements Atome_NE{
                     booleans.push(rez1[0]);
                     return booleans ;
                 }
-            }).compose(connecteur.getTraitement_recursif());
+            }).compose(connecteur.getTraitement_recursif()).andThen(new Function<Stack<Boolean>, Stack<Boolean>>() {
+                @Override
+                public Stack<Boolean> apply(Stack<Boolean> booleans) {
+                    return booleans;
+                }
+            });
         }
         return F1;
+    }
+
+    @Override
+    public void getLitteraux(HashSet<Formule_Atomique> litteraux) {
+       membreGauche.getLitteraux(litteraux);
+       membreDroit.getLitteraux(litteraux);
+    }
+
+
+
+    @Override
+    public boolean isVariable() {
+        return false;
     }
 
     @Override

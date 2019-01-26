@@ -1,5 +1,7 @@
 package Metier;
 
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Stack;
 import java.util.function.Function;
 
@@ -11,9 +13,20 @@ public abstract class Expression_Logique implements Refutable {
         return stackHandler;
     }
 
+    public abstract void getLitteraux(HashSet<Formule_Atomique> litteraux);
 
     @Override
     public abstract boolean evaluer();
+
+    public  LinkedList<Boolean> getValeursVerite(){
+        HashSet<Formule_Atomique> HF = new HashSet<>();
+        getLitteraux(HF);
+        LinkedList<Boolean> LB = new LinkedList<>();
+        for(Formule_Atomique F:HF){
+            LB.add(F.getValeur());
+        }
+        return LB;
+    }
 
 
     @Override

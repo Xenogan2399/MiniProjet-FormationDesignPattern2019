@@ -1,5 +1,6 @@
 package Metier;
 
+import java.util.HashSet;
 import java.util.Stack;
 import java.util.function.Function;
 
@@ -29,10 +30,5 @@ public class Connecteur_Personnalise implements Connecteur {
     @Override
     public Function<Stack<Boolean>, Stack<Boolean>> getStackHandler() {
         return expression_semantique.getStackHandler();
-    }
-
-    @Override
-    public boolean isFeuille() {
-        return false;
     }
 }
