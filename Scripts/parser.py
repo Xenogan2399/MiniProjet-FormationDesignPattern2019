@@ -15,7 +15,6 @@ tokens = [
     'AND',
     'ARROW',
     'EQUALS',
-    'NEW_LINE',
     'TRUE',
     'PAR_OUVRANTE',
     'PAR_FERMANTE',
@@ -27,9 +26,6 @@ t_EQUALS = r'\='
 t_PAR_OUVRANTE = r'\('
 t_PAR_FERMANTE = r'\)'
 
-def t_NEW_LINE(t):
-    r'\n'
-    return t
 
 def t_SEPARATEUR(t):
     r'_'

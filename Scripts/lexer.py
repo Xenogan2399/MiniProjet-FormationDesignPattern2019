@@ -14,7 +14,6 @@ tokens = [
     'AND',
     'ARROW',
     'EQUALS',
-    'NEW_LINE',
     'TRUE',
     'PAR_OUVRANTE',
     'PAR_FERMANTE',
@@ -22,7 +21,6 @@ tokens = [
     'SEPARATEUR'
 ]
 t_ignore = r' '
-t_NEW_LINE = r'\n'
 t_EQUALS = r'\='
 t_PAR_OUVRANTE = r'\('
 t_PAR_FERMANTE = r'\)'
